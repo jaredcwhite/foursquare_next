@@ -77,15 +77,15 @@ class TestClient < Test::Unit::TestCase
     end
 
     should "apply the middleware to the connection" do
-      middleware = [FaradayMiddleware::Instrumentation,
-                    [FaradayMiddleware::ParseJson, {:content_type => /\bjson$/}]]
+      middleware = [Faraday::Request::Instrumentation,
+                    [Faraday::Response::Json, {:content_type => /\bjson$/}]]
       client = FoursquareNext::Client.new(:connection_middleware => middleware)
 
       Faraday::RackBuilder.any_instance.expects(:use).at_least_once
       Faraday::RackBuilder.any_instance.expects(:use). \
-        with(FaradayMiddleware::Instrumentation)
+        with(Faraday::Request::Instrumentation)
       Faraday::RackBuilder.any_instance.expects(:use). \
-        with(FaradayMiddleware::ParseJson, :content_type => /\bjson$/)
+        with(Faraday::Response::Json, :content_type => /\bjson$/)
 
       client.connection
     end

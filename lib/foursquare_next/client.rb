@@ -1,4 +1,5 @@
 require 'forwardable'
+require "faraday/response/json"
 
 module FoursquareNext
   class Client
@@ -6,7 +7,7 @@ module FoursquareNext
       Faraday::Request::Multipart,
       Faraday::Request::UrlEncoded,
       FoursquareNext::MashifyWrapper,
-      FaradayMiddleware::ParseJson
+      Faraday::Response::Json
     ].freeze
 
     DEFAULT_HEADERS = {

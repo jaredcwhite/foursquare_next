@@ -23,14 +23,12 @@ Gem::Specification.new do |s|
   s.rubygems_version = "1.8.23"
   s.summary = "Foursquare API v2 updated support in the spirit of the original foursquare & foursquare2 gem"
 
-  s.add_runtime_dependency("faraday", ["~> 0.15"])
-  s.add_runtime_dependency("faraday_middleware", ["~> 0.12"])
+  s.add_runtime_dependency("faraday", [">= 1.0", "< 2.0"])
   s.add_runtime_dependency("hashie", ["~> 4.1"])
   s.add_development_dependency "rake", "~> 13.0"
   s.add_development_dependency("awesome_print", ["~> 1.9"])
   s.add_development_dependency("shoulda", ["~> 4.0"])
   s.add_development_dependency("fakeweb", ["~> 1.3"])
-  s.add_development_dependency("json_pure", ["~> 1.4"])
   s.add_development_dependency("multi_json", ["< 2.0.0", ">= 0.0.5"])
   s.add_development_dependency("test-unit", ["~> 3.0"])
   s.add_development_dependency("jnunemaker-matchy", ["~> 0.4.0"])
